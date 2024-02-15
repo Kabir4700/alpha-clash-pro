@@ -20,7 +20,7 @@ function handleKeyboardKeyUpEvent(event){
 
 const currentAlphabetElement= document.getElementById('current-alphabet');
 const currentAlphabet = currentAlphabetElement.innerText;
-const expectedAlphabet = currentAlphabet.toLowercase();
+const expectedAlphabet = currentAlphabet.toLowerCase();
 // console.log(playerPressed, expectedAlphabet);
    
   
@@ -30,11 +30,47 @@ const expectedAlphabet = currentAlphabet.toLowercase();
 
 //check match or not
 if(playerPressed === expectedAlphabet){
-    console.log('you get a point');
-} 
+console.log('you get a point');
+    // console.log('You have a pressed correctly',expectedAlphabet);
+    // removeBackgroundColorById(expectedAlphabet);
+
+// Update score :
+// 1.get the current score 
+const currentScoreElement = document.getElementById('current-score');
+const currentScoreText = currentScoreElement.innerText ;
+const currentScore = parseInt(currentScoreText);
+console.log(currentScore);
+
+// 2. increase the score by 1
+const newScore= currentScore +1
+
+// 3.show the update score
+currentScoreElement.innerText = newScore
+
+
+
+// start a new round
+    continueGame();
+
+}
 
 else{
-    console.log('you get your life');
+    console.log('Madarir cud tik tak tip');
+    // 1. get the current life number
+
+const currentLifeElement = document.getElementById('current-life');
+const currentLifeText = currentLifeElement.innerText;
+const currentLife = parseInt(currentLifeText);
+
+
+    // step 2 : reduce the life count 
+const newLife = currentLife - 1 ;
+
+
+
+
+    //step 3- display the update life count  
+   currentLifeElement.innerText =newLife ;
 }
 
 
@@ -47,7 +83,7 @@ document.addEventListener('keyup',handleKeyboardKeyUpEvent);
 function continueGame(){
     // step 1  generate a random alphabet
     const alphabet = getARandomAlphabet();
-    console.log('your random alphabet',alphabet);
+    // console.log('your random alphabet',alphabet);
 
     // randomly generate alphabet
 // get an random index between 0-25
@@ -55,7 +91,7 @@ function continueGame(){
     const currentAlphabetElement = document.getElementById('current-alphabet');
     currentAlphabetElement.innerText= alphabet ;
     //  set background color
-    setBackgroundColorById(alphabet);
+    // setBackgroundColorByIdBackgroundColorById(alphabet);
 
     
 }
